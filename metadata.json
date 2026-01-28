@@ -1,0 +1,7 @@
+{
+  "name": "Ecosistema Digital Los Colibrís",
+  "description": "Una plataforma de gobernanza horizontal para cooperativas, con transparencia radical, gestión bi-monetaria (VES/USD) y asistencia de IA para auditoría e igualdad.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

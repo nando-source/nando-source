@@ -1,9 +1,22 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Always initialize GoogleGenAI using the process.env.API_KEY environment variable.
+// Función segura para obtener la API KEY sin romper el hilo de ejecución del navegador
+const getApiKey = () => {
+  try {
+    // Verificamos si process y process.env existen antes de acceder
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    console.warn("Ambiente process.env no detectado, esperando inyección de clave.");
+  }
+  return "";
+};
+
 const getAIClient = () => {
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const apiKey = getApiKey();
+  return new GoogleGenAI({ apiKey });
 };
 
 export const analyzeSupplierROI = async (data: string) => {
